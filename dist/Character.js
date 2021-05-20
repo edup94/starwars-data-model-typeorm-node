@@ -24,46 +24,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 exports.__esModule = true;
-exports.User = void 0;
+exports.Character = void 0;
 var typeorm_1 = require("typeorm");
 var Favorite_1 = require("./Favorite");
-var User = /** @class */ (function (_super) {
-    __extends(User, _super);
-    function User() {
+var Character = /** @class */ (function (_super) {
+    __extends(Character, _super);
+    function Character() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], User.prototype, "UserID");
+    ], Character.prototype, "CharacterID");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], User.prototype, "Name");
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "LastName");
-    __decorate([
-        typeorm_1.Column({ unique: true }),
-        __metadata("design:type", String)
-    ], User.prototype, "Email");
-    __decorate([
-        typeorm_1.Column({ unique: true }),
-        __metadata("design:type", String)
-    ], User.prototype, "Password");
+    ], Character.prototype, "Name");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", Number)
-    ], User.prototype, "FavoriteID");
+    ], Character.prototype, "Height");
     __decorate([
-        typeorm_1.ManyToMany(function () { return Favorite_1.Favorite; }),
-        typeorm_1.JoinTable(),
-        __metadata("design:type", Array)
-    ], User.prototype, "favorites");
-    User = __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], Character.prototype, "Mass");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "HairColor");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "SkinColor");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "EyeColor");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "BirthYear");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "Gender");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "Homeworld");
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Character.prototype, "ImgUrl");
+    __decorate([
+        typeorm_1.ManyToOne(function () { return Favorite_1.Favorite; }, function (favorite) { return favorite.characters; }),
+        __metadata("design:type", Favorite_1.Favorite)
+    ], Character.prototype, "favorite");
+    Character = __decorate([
         typeorm_1.Entity()
-    ], User);
-    return User;
+    ], Character);
+    return Character;
 }(typeorm_1.BaseEntity));
-exports.User = User;
+exports.Character = Character;

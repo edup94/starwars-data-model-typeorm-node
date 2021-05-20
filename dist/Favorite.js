@@ -24,46 +24,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 exports.__esModule = true;
-exports.User = void 0;
+exports.Favorite = void 0;
 var typeorm_1 = require("typeorm");
-var Favorite_1 = require("./Favorite");
-var User = /** @class */ (function (_super) {
-    __extends(User, _super);
-    function User() {
+var Planet_1 = require("./Planet");
+var Character_1 = require("./Character");
+var User_1 = require("./User");
+var Favorite = /** @class */ (function (_super) {
+    __extends(Favorite, _super);
+    function Favorite() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], User.prototype, "UserID");
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "Name");
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], User.prototype, "LastName");
-    __decorate([
-        typeorm_1.Column({ unique: true }),
-        __metadata("design:type", String)
-    ], User.prototype, "Email");
-    __decorate([
-        typeorm_1.Column({ unique: true }),
-        __metadata("design:type", String)
-    ], User.prototype, "Password");
+    ], Favorite.prototype, "FavoriteID");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", Number)
-    ], User.prototype, "FavoriteID");
+    ], Favorite.prototype, "CharacterID");
     __decorate([
-        typeorm_1.ManyToMany(function () { return Favorite_1.Favorite; }),
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], Favorite.prototype, "PlanetID");
+    __decorate([
+        typeorm_1.OneToMany(function () { return Planet_1.Planet; }, function (planet) { return planet.favorite; }),
+        __metadata("design:type", Array)
+    ], Favorite.prototype, "planets");
+    __decorate([
+        typeorm_1.OneToMany(function () { return Character_1.Character; }, function (character) { return character.favorite; }),
+        __metadata("design:type", Array)
+    ], Favorite.prototype, "characters");
+    __decorate([
+        typeorm_1.ManyToMany(function () { return User_1.User; }),
         typeorm_1.JoinTable(),
         __metadata("design:type", Array)
-    ], User.prototype, "favorites");
-    User = __decorate([
+    ], Favorite.prototype, "users");
+    Favorite = __decorate([
         typeorm_1.Entity()
-    ], User);
-    return User;
+    ], Favorite);
+    return Favorite;
 }(typeorm_1.BaseEntity));
-exports.User = User;
+exports.Favorite = Favorite;
