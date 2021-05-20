@@ -21,11 +21,4 @@ export class User extends BaseEntity{
   
     @Column({unique: true})
     Password: string;
-
-    @Column()
-    FavoriteID: number
-
-    @ManyToMany(() => Favorite)
-    @JoinTable()
-    favorites: Favorite[];
   }
