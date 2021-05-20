@@ -9,6 +9,9 @@ export class Favorite extends BaseEntity {
     @PrimaryGeneratedColumn()
     FavoriteID: number
 
+    @Column()
+    UserID: number
+
     @Column({nullable: true})
     CharacterID: number
 
