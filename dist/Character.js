@@ -26,7 +26,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 exports.__esModule = true;
 exports.Character = void 0;
 var typeorm_1 = require("typeorm");
-var Favorite_1 = require("./Favorite");
+var Planet_1 = require("./Planet");
 var Character = /** @class */ (function (_super) {
     __extends(Character, _super);
     function Character() {
@@ -35,7 +35,7 @@ var Character = /** @class */ (function (_super) {
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], Character.prototype, "CharacterID");
+    ], Character.prototype, "ID");
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
@@ -77,9 +77,9 @@ var Character = /** @class */ (function (_super) {
         __metadata("design:type", String)
     ], Character.prototype, "ImgUrl");
     __decorate([
-        typeorm_1.ManyToOne(function () { return Favorite_1.Favorite; }, function (favorite) { return favorite.characters; }),
-        __metadata("design:type", Favorite_1.Favorite)
-    ], Character.prototype, "favorite");
+        typeorm_1.ManyToOne(function () { return Planet_1.Planet; }, function (planet) { return planet.characters; }),
+        __metadata("design:type", Planet_1.Planet)
+    ], Character.prototype, "planet");
     Character = __decorate([
         typeorm_1.Entity()
     ], Character);

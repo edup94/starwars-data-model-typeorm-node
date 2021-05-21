@@ -1,11 +1,11 @@
-import {Entity,PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne} from "typeorm";
-import {Favorite} from "./Favorite";
+import {Entity,PrimaryGeneratedColumn, Column, BaseEntity, OneToMany} from "typeorm";
+import { Character } from "./Character";
 
 @Entity()
 export class Planet extends BaseEntity {
 
     @PrimaryGeneratedColumn()
-    PlanetID: number
+    ID: number
 
     @Column()
     Name: string
@@ -34,7 +34,6 @@ export class Planet extends BaseEntity {
     @Column()
     ImgUrl: string
 
-    @ManyToOne(() => Favorite, favorite => favorite.planets)
-    favorite: Favorite;
-
+    @OneToMany(() => Character, character => character.planet)
+    characters: Character[];
 }
